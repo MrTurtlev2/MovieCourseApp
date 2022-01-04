@@ -1,12 +1,9 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
+import Home from './src/components/screens/Home';
 
 const App = () => {
-    return (
-        <View style={styles.sectionContainer}>
-            <Text>ggrgr</Text>
-        </View>
-    );
+    return <Home />;
 };
 
 const styles = StyleSheet.create({
