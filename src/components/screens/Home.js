@@ -23,9 +23,11 @@ const Home = () => {
     }, []);
     return (
         <View style={styles.sectionContainer}>
-            <SliderBox images={moviesImages} />
-            {/*<Text>{popularMovies.original_title}</Text>*/}
-            <Text>rgrg</Text>
+            <SliderBox
+                images={moviesImages}
+                sliderBoxHeight={600}
+                dotStyle={styles.sliderDots}
+            />
         </View>
     );
 };
@@ -34,5 +36,8 @@ export default Home;
 const styles = StyleSheet.create({
     sectionContainer: {
         flex: 1,
+    },
+    sliderDots: {
+        width: 0,
     },
 });
