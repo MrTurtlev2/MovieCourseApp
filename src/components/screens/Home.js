@@ -3,12 +3,14 @@ import {
     getPopularMovies,
     getUpcomingMovies,
 } from '../../../services/movie-services';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View, Dimensions, FlatList, Text, ScrollView} from 'react-native';
 import {SliderBox} from 'react-native-image-slider-box';
+import List from "../common/List";
 
 const Home = () => {
+    const ScreenHeight = Dimensions.get('screen').height;
     const [moviesImages, setMoviesImages] = useState('');
-    // const [popularMovies, setPopularMovies] = useState('');
+    const [popularMovies, setPopularMovies] = useState('');
 
     useEffect(() => {
         getUpcomingMovies().then(movies => {
@@ -20,15 +22,25 @@ const Home = () => {
             });
             setMoviesImages(moviesArray);
         });
+        getPopularMovies().then(movies => {
+            setPopularMovies(movies);
+        });
     }, []);
     return (
-        <View style={styles.sectionContainer}>
+        <ScrollView
+            showsVerticalScrollIndicator={false}
+            style={styles.sectionContainer}>
             <SliderBox
                 images={moviesImages}
-                sliderBoxHeight={600}
+                sliderBoxHeight={ScreenHeight / 1.5}
+                circleLoop={true}
+                autoplay={true}
                 dotStyle={styles.sliderDots}
             />
-        </View>
+            <List data={popularMovies} sectionTitle="Popular Movies" />
+            <List data={popularMovies} sectionTitle="Popular Movies" />
+            <List data={popularMovies} sectionTitle="Popular Movies" />
+        </ScrollView>
     );
 };
 export default Home;
