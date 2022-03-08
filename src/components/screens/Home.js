@@ -3,14 +3,7 @@ import {
     getPopularMovies,
     getUpcomingMovies,
 } from '../../../services/movie-services';
-import {
-    StyleSheet,
-    View,
-    Dimensions,
-    FlatList,
-    Text,
-    ScrollView,
-} from 'react-native';
+import {StyleSheet, Dimensions, ScrollView} from 'react-native';
 import {SliderBox} from 'react-native-image-slider-box';
 import List from '../common/List';
 
