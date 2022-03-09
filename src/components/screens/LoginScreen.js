@@ -1,23 +1,12 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import KeyboardAvoidingView from 'react-native/Libraries/Components/Keyboard/KeyboardAvoidingView';
-import {useState} from 'react/cjs/react.production.min';
-import {auth} from '../../../firebase';
 import CustomButton from '../common/CustomButton';
 
 const LoginScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    const handleSignUp = () => {
-        auth.createUserWithEmailAndPassword(email, password).then(
-            userCredintials => {
-                const user = userCredintials.user;
-                console.log(user.email);
-            },
-        );
-    };
 
     return (
         <KeyboardAvoidingView behavior="padding" styles={styles.KeyboardView}>
@@ -36,7 +25,7 @@ const LoginScreen = () => {
             />
 
             <CustomButton btnText="Login" />
-            <CustomButton btnText="Register" onPress={handleSignUp} />
+            {/* <CustomButton btnText="Register" onPress={handleSignUp} /> */}
         </KeyboardAvoidingView>
     );
 };

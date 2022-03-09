@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "18776810849",
+    "project_id": "movieappwm",
+    "storage_bucket": "movieappwm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18776810849:android:bfe35b000443b842a15120",
+        "android_client_info": {
+          "package_name": "com.moviecourseapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "18776810849-a10c84l8otjqb8t0h63eknuu2f5f3fhv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoJw9PZ1O0OR8YY3kKncvmiLLKXA1eFGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18776810849-a10c84l8otjqb8t0h63eknuu2f5f3fhv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
