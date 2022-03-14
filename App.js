@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import Home from './src/components/screens/Home';
-// import createNativeStackNavigator from '@react-navigation/native-stack';
+import { LogBox } from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import LoginScreen from './src/components/screens/LoginScreen';
@@ -34,3 +34,9 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+
+
+
+LogBox.ignoreLogs([
+  "[react-native-gesture-handler] Seems like you\'re using an old API with gesture components, check out new Gestures system!",
+]);

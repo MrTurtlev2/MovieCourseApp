@@ -4,21 +4,23 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 const CustomButton = ({btnText, onPress}) => {
     return (
-        <TouchableOpacity style={styles.MainWrapper} onPress={() => onPress}>
-            <Text>{btnText}</Text>
+        <TouchableOpacity style={styles.mainWrapper} onPress={() => onPress()}>
+            <Text style={styles.btnText}>{btnText}</Text>
         </TouchableOpacity>
     );
 };
 export default CustomButton;
 
 const styles = StyleSheet.create({
-    KeyboardView: {},
-    MainWrapper: {
-        borderRadius: 12,
-        backgroundColor: 'blue',
+    mainWrapper: {
+        borderRadius: 4,
+        backgroundColor: '#00BFFF',
         paddingHorizontal: 10,
-        paddingVertical: 5,
-        width: 100,
-        marginBottom: 10,
+        paddingVertical: 10,
+        marginBottom: 15,
     },
+    btnText: {
+        color: '#FFF',
+    },
+
 });
