@@ -2,29 +2,52 @@ import React, {useEffect, useState} from 'react';
 import {
     getPopularMovies,
     getUpcomingMovies,
+    getPopularTv,
 } from '../../../services/movie-services';
-import {StyleSheet, View, Dimensions, FlatList, Text, ScrollView} from 'react-native';
+import {StyleSheet, Dimensions, ScrollView} from 'react-native';
 import {SliderBox} from 'react-native-image-slider-box';
-import List from "../common/List";
+import List from '../common/List';
 
 const Home = () => {
     const ScreenHeight = Dimensions.get('screen').height;
     const [moviesImages, setMoviesImages] = useState('');
     const [popularMovies, setPopularMovies] = useState('');
+    const [upcomingMovies, setUpcomingMovies] = useState('');
+    const [popularTv, setPopularTv] = useState('');
+    const [loadingError, setLoadingError] = useState('');
+
+    const getData = () => {
+        return Promise.all([
+            getPopularMovies(),
+            getUpcomingMovies(),
+            getPopularTv(),
+        ]);
+    };
 
     useEffect(() => {
-        getUpcomingMovies().then(movies => {
-            const moviesArray = [];
-            movies.forEach(movie => {
-                moviesArray.push(
-                    'https://image.tmdb.org/t/p/w500/' + movie.poster_path,
-                );
+        getData()
+            .then(
+                ([
+                    upcomingMoviesPromise,
+                    popularMoviesPromise,
+                    popularTvPromise,
+                ]) => {
+                    const moviesArray = [];
+                    upcomingMoviesPromise.forEach(movie => {
+                        moviesArray.push(
+                            'https://image.tmdb.org/t/p/w500/' +
+                                movie.poster_path,
+                        );
+                    });
+                    setMoviesImages(moviesArray);
+                    setUpcomingMovies(upcomingMoviesPromise);
+                    setPopularMovies(popularMoviesPromise);
+                    setPopularTv(popularTvPromise);
+                },
+            )
+            .catch(err => {
+                setLoadingError(err);
             });
-            setMoviesImages(moviesArray);
-        });
-        getPopularMovies().then(movies => {
-            setPopularMovies(movies);
-        });
     }, []);
     return (
         <ScrollView
@@ -38,8 +61,8 @@ const Home = () => {
                 dotStyle={styles.sliderDots}
             />
             <List data={popularMovies} sectionTitle="Popular Movies" />
-            <List data={popularMovies} sectionTitle="Popular Movies" />
-            <List data={popularMovies} sectionTitle="Popular Movies" />
+            <List data={upcomingMovies} sectionTitle="Upcoming Movies" />
+            <List data={popularTv} sectionTitle="Popular Tv's" />
         </ScrollView>
     );
 };
