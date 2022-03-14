@@ -6,8 +6,12 @@ import CustomButton from '../common/CustomButton';
 import { autenthication } from '../../../firebase/firebase-config';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import CustomInput from '../common/CustomInput';
+import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () => {
+
+    const navigation = useNavigation();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isSignedIn, setSignedIn] = useState(false);
@@ -24,6 +28,7 @@ const LoginScreen = () => {
         signInWithEmailAndPassword(autenthication, email, password)
         .then((event) => {
             console.log(event)
+            navigation.navigate('Home')
             setSignedIn(true);
         })
         .catch((event) => console.log(event))
