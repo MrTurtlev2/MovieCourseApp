@@ -5,6 +5,7 @@ import KeyboardAvoidingView from 'react-native/Libraries/Components/Keyboard/Key
 import CustomButton from '../common/CustomButton';
 import { autenthication } from '../../../firebase/firebase-config';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import CustomInput from '../common/CustomInput';
 
 const LoginScreen = () => {
     const [email, setEmail] = useState('');
@@ -39,22 +40,20 @@ const LoginScreen = () => {
 
     return (
         <KeyboardAvoidingView behavior="padding" styles={styles.KeyboardView}>
-            <TextInput
+            <CustomInput
                 placeholder="Login"
                 value={email}
                 onChangeText={text => setEmail(text)}
-                styles={styles.input}
             />
-            <TextInput
+            <CustomInput
                 placeholder="Password"
                 value={password}
                 onChangeText={text => setPassword(text)}
-                styles={styles.input}
-                secureTextEntry
+                keyboardType='numeric'
             />
 
             <CustomButton btnText="Register" onPress={createUser}/>
-           
+
             {isSignedIn ? (
                 <CustomButton btnText="Log Out" onPress={signOutUser}/>
             ):(
@@ -68,8 +67,4 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
     KeyboardView: {},
-    input: {
-        borderRadius: 12,
-        backgroundColor: 'blue',
-    },
 });

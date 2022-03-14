@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 10,
         marginBottom: 15,
+        width: 200,
     },
     btnText: {
         color: '#FFF',
