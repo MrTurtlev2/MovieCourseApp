@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import KeyboardAvoidingView from 'react-native/Libraries/Components/Keyboard/KeyboardAvoidingView';
 import CustomButton from '../common/CustomButton';
 import {autenthication} from '../../../firebase/firebase-config';
@@ -46,27 +46,31 @@ const LoginScreen = () => {
     };
 
     return (
-        <KeyboardAvoidingView behavior="padding" styles={styles.KeyboardView}>
-            <CustomInput
-                placeholder="Login"
-                value={email}
-                onChangeText={text => setEmail(text)}
-            />
-            <CustomInput
-                placeholder="Password"
-                value={password}
-                onChangeText={text => setPassword(text)}
-                keyboardType="numeric"
-            />
+        <View>
+            <KeyboardAvoidingView
+                behavior="padding"
+                styles={styles.KeyboardView}>
+                <CustomInput
+                    placeholder="Login"
+                    value={email}
+                    onChangeText={text => setEmail(text)}
+                />
+                <CustomInput
+                    placeholder="Password"
+                    value={password}
+                    onChangeText={text => setPassword(text)}
+                    keyboardType="numeric"
+                />
 
-            <CustomButton btnText="Register" onPress={createUser} />
+                <CustomButton btnText="Register" onPress={createUser} />
 
-            {isSignedIn ? (
-                <CustomButton btnText="Log Out" onPress={signOutUser} />
-            ) : (
-                <CustomButton btnText="Login" onPress={signInUser} />
-            )}
-        </KeyboardAvoidingView>
+                {isSignedIn ? (
+                    <CustomButton btnText="Log Out" onPress={signOutUser} />
+                ) : (
+                    <CustomButton btnText="Login" onPress={signInUser} />
+                )}
+            </KeyboardAvoidingView>
+        </View>
     );
 };
 
