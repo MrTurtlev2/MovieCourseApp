@@ -23,5 +23,4 @@ const styles = StyleSheet.create({
     btnText: {
         color: '#FFF',
     },
-
 });

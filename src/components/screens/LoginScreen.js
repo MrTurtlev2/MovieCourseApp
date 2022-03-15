@@ -1,15 +1,17 @@
-import React,{useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {TextInput} from 'react-native-gesture-handler';
+import React, {useState} from 'react';
+import {StyleSheet} from 'react-native';
 import KeyboardAvoidingView from 'react-native/Libraries/Components/Keyboard/KeyboardAvoidingView';
 import CustomButton from '../common/CustomButton';
-import { autenthication } from '../../../firebase/firebase-config';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import {autenthication} from '../../../firebase/firebase-config';
+import {
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+} from 'firebase/auth';
 import CustomInput from '../common/CustomInput';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 const LoginScreen = () => {
-
     const navigation = useNavigation();
 
     const [email, setEmail] = useState('');
@@ -18,30 +20,30 @@ const LoginScreen = () => {
 
     const createUser = () => {
         createUserWithEmailAndPassword(autenthication, email, password)
-        .then((event) => {
-            console.log(event)
-        })
-        .catch((event) => console.log(event))
-    }
+            .then(event => {
+                console.log(event);
+            })
+            .catch(event => console.log(event));
+    };
 
     const signInUser = () => {
         signInWithEmailAndPassword(autenthication, email, password)
-        .then((event) => {
-            console.log(event)
-            navigation.navigate('Home')
-            setSignedIn(true);
-        })
-        .catch((event) => console.log(event))
-    }
+            .then(event => {
+                console.log(event);
+                navigation.navigate('Home');
+                setSignedIn(true);
+            })
+            .catch(event => console.log(event));
+    };
 
     const signOutUser = () => {
         signOut(autenthication, email, password)
-        .then((event) => {
-            console.log(event)
-            setSignedIn(false);
-        })
-        .catch((event) => console.log(event))
-    }
+            .then(event => {
+                console.log(event);
+                setSignedIn(false);
+            })
+            .catch(event => console.log(event));
+    };
 
     return (
         <KeyboardAvoidingView behavior="padding" styles={styles.KeyboardView}>
@@ -54,15 +56,15 @@ const LoginScreen = () => {
                 placeholder="Password"
                 value={password}
                 onChangeText={text => setPassword(text)}
-                keyboardType='numeric'
+                keyboardType="numeric"
             />
 
-            <CustomButton btnText="Register" onPress={createUser}/>
+            <CustomButton btnText="Register" onPress={createUser} />
 
             {isSignedIn ? (
-                <CustomButton btnText="Log Out" onPress={signOutUser}/>
-            ):(
-                <CustomButton btnText="Login" onPress={signInUser}/>
+                <CustomButton btnText="Log Out" onPress={signOutUser} />
+            ) : (
+                <CustomButton btnText="Login" onPress={signInUser} />
             )}
         </KeyboardAvoidingView>
     );
