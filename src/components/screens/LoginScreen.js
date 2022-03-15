@@ -10,6 +10,8 @@ import {
 } from 'firebase/auth';
 import CustomInput from '../common/CustomInput';
 import {useNavigation} from '@react-navigation/native';
+import letterIcon from '../../assets/icons/letter.png';
+import lockerIcon from '../../assets/icons/locker.png';
 
 const LoginScreen = () => {
     const navigation = useNavigation();
@@ -46,22 +48,23 @@ const LoginScreen = () => {
     };
 
     return (
-        <View>
-            <KeyboardAvoidingView
-                behavior="padding"
-                styles={styles.KeyboardView}>
+        <View style={styles.mainWrapper}>
+            <KeyboardAvoidingView behavior="padding">
                 <CustomInput
                     placeholder="Login"
                     value={email}
+                    icon={letterIcon}
                     onChangeText={text => setEmail(text)}
                 />
                 <CustomInput
                     placeholder="Password"
                     value={password}
+                    icon={lockerIcon}
                     onChangeText={text => setPassword(text)}
                     keyboardType="numeric"
                 />
-
+            </KeyboardAvoidingView>
+            <View styles={styles.inputWrapper}>
                 <CustomButton btnText="Register" onPress={createUser} />
 
                 {isSignedIn ? (
@@ -69,7 +72,7 @@ const LoginScreen = () => {
                 ) : (
                     <CustomButton btnText="Login" onPress={signInUser} />
                 )}
-            </KeyboardAvoidingView>
+            </View>
         </View>
     );
 };
@@ -77,5 +80,14 @@ const LoginScreen = () => {
 export default LoginScreen;
 
 const styles = StyleSheet.create({
-    KeyboardView: {},
+    mainWrapper: {
+        alignItems: 'center',
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: '#364660',
+    },
+    inputWrapper: {
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 });
