@@ -26,6 +26,7 @@ const LoginScreen = () => {
                 console.log(event);
             })
             .catch(event => console.log(event));
+        navigation.navigate('RegisterScreen');
     };
 
     const signInUser = () => {
