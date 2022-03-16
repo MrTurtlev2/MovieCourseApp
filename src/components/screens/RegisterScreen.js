@@ -14,6 +14,7 @@ import {
     validEmail,
     hasSpecialLetters,
 } from '../../../regex/Regex';
+import Validator from '../common/Validator';
 import CustomInput from '../common/CustomInput';
 import {useNavigation} from '@react-navigation/native';
 import letterIcon from '../../assets/icons/letter.png';
@@ -32,14 +33,16 @@ const RegisterScreen = () => {
                 navigation.navigate('LoginScreen');
             })
             .catch(event => console.log(event));
-        navigation.navigate('LoginScreen');
+        // navigation.navigate('LoginScreen');
     };
 
     const testing = () => {
         if (hasSpecialLetters.test(password)) {
             console.log('jest super');
+            return true;
         } else {
             console.log('nie super :(');
+            return false;
         }
     };
     return (
@@ -66,6 +69,8 @@ const RegisterScreen = () => {
             />
 
             <CustomButton btnText="Create account" onPress={testing} />
+
+            <Validator isValid={testing()} />
         </View>
     );
 };
