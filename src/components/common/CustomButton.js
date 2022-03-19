@@ -13,13 +13,14 @@ export default CustomButton;
 const styles = StyleSheet.create({
     mainWrapper: {
         borderRadius: 4,
-        backgroundColor: '#00BFFF',
+        backgroundColor: '#34BDB6',
         paddingHorizontal: 10,
         paddingVertical: 10,
         marginBottom: 15,
         width: 200,
+        // width: handle(200),
     },
     btnText: {
-        color: '#FFF',
+        color: '#E9FFFF',
     },
 });
