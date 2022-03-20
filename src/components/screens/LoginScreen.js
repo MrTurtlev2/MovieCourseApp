@@ -73,6 +73,10 @@ const LoginScreen = () => {
                 ) : (
                     <CustomButton btnText="Login" onPress={signInUser} />
                 )}
+                <CustomButton
+                    btnText="go to"
+                    onPress={() => navigation.navigate('CurrencyScreen')}
+                />
             </View>
         </View>
     );

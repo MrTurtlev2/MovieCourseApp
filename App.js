@@ -14,7 +14,7 @@ const App = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                {/* <Stack.Screen
+                <Stack.Screen
                     options={{headerShown: false}}
                     name="LoginScreen"
                     component={LoginScreen}
@@ -28,7 +28,7 @@ const App = () => {
                     options={{headerShown: false}}
                     name="Home"
                     component={Home}
-                /> */}
+                />
                 <Stack.Screen
                     options={{headerShown: false}}
                     name="CurrencyScreen"
