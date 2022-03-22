@@ -4,7 +4,7 @@ import {View, Text, StyleSheet, FlatList} from 'react-native';
 // import getPlnToForeign from '../../../services/currency-service';
 
 const CurrencyScreen = () => {
-    const [currencyValue, setCurrencyValue] = useState(null);
+    const [currencyValue, setCurrencyValue] = useState({});
     const [currencyHistoryValue, setCurrencyHistoryValue] = useState(null);
 
     const appi = 'http://api.nbp.pl/api/cenyzlota';
@@ -25,6 +25,7 @@ const CurrencyScreen = () => {
     return (
         <View style={styles.container}>
             <Text>{currencyValue.cena}</Text>
+            {/* <Text>{currencyHistoryValue}</Text> */}
             <Text>grgerg</Text>
         </View>
     );
