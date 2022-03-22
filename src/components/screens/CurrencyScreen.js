@@ -5,26 +5,26 @@ import {View, Text, StyleSheet, FlatList} from 'react-native';
 
 const CurrencyScreen = () => {
     const [currencyValue, setCurrencyValue] = useState(null);
+    const [currencyHistoryValue, setCurrencyHistoryValue] = useState(null);
 
     const appi = 'http://api.nbp.pl/api/cenyzlota';
+    const currencyHistoryApi = 'http://api.nbp.pl/api/exchangerates/rates/c/';
 
     const getPlnToForeign = async () => {
-        axios.get(appi).then(response => {
-            // console.log(response.data);
-            setCurrencyValue(response.data[0].cena);
-            // return response.data;
-        });
+        const resp = await axios.get(appi);
+        return resp.data[0];
     };
 
     useEffect(() => {
-        getPlnToForeign();
+        getPlnToForeign().then(item => {
+            setCurrencyValue(item);
+            console.log(item);
+        });
     }, []);
-
-    console.log(currencyValue);
 
     return (
         <View style={styles.container}>
-            <Text>{currencyValue}</Text>
+            <Text>{currencyValue.cena}</Text>
             <Text>grgerg</Text>
         </View>
     );
